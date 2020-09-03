@@ -9,6 +9,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import fbConnection from '../helpers/data/connections';
 import './App.scss';
+import Auth from '../components/Auth/Auth';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import Edit from '../components/Edit/Edit';
 import MyStuff from '../components/MyStuff/MyStuff';
@@ -66,16 +67,12 @@ class App extends React.Component {
                 <PrivateRoute path="/stuff" component={MyStuff} authed={authed} />
                 <PrivateRoute path="/edit/12345" component={Edit} authed={authed} />
                 <PrivateRoute path="/stuff/12345" component={SingleStuff} authed={authed} />
+                <PublicRoute path="/auth" component={Auth} authed={authed} />
+                <Redirect from="*" to="/home"/>
               </Switch>
             </div>
           </>
         </BrowserRouter>
-
-        {/* <MyNavbar authed={authed} />
-        <MyStuff />
-        <NewStuff />
-        <SingleStuff />
-        <Edit /> */}
       </div>
 
     // <div className="App">
