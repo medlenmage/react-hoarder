@@ -1,10 +1,20 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import fbConnection from '../helpers/data/connections';
 import './App.scss';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
+import Edit from '../components/Edit/Edit';
+import MyStuff from '../components/MyStuff/MyStuff';
+import NewStuff from '../components/New/New';
+import SingleStuff from '../components/SingleStuff/SingleStuff';
+import Home from '../components/Home/Home';
 
 fbConnection();
 
@@ -44,18 +54,34 @@ class App extends React.Component {
   render() {
     const { authed } = this.state;
 
-    // const loadComponent = () => {
-    //   if (authed) {
-
-    //   }
-    //   return '';
-    // };
-
     return (
       <div className="App">
-        <MyNavbar authed={authed}/>
-        <h2>react hoarder</h2>
+        <BrowserRouter>
+          <>
+            <MyNavbar authed={authed} />
+            <div className="container">
+              <Switch>
+                <PrivateRoute path="/home" component={Home} authed={authed} />
+                <PrivateRoute path="/new" component={NewStuff} authed={authed} />
+                <PrivateRoute path="/stuff" component={MyStuff} authed={authed} />
+                <PrivateRoute path="/edit/12345" component={Edit} authed={authed} />
+                <PrivateRoute path="/stuff/12345" component={SingleStuff} authed={authed} />
+              </Switch>
+            </div>
+          </>
+        </BrowserRouter>
+
+        {/* <MyNavbar authed={authed} />
+        <MyStuff />
+        <NewStuff />
+        <SingleStuff />
+        <Edit /> */}
       </div>
+
+    // <div className="App">
+    //   <MyNavbar authed={authed}/>
+    //   <h2>react hoarder</h2>
+    // </div>
     );
   }
 }
