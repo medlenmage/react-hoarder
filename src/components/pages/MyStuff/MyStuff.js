@@ -1,7 +1,7 @@
 import React from 'react';
-import itemsData from '../../helpers/data/itemsData';
-import BuildItems from '../BuildItems/BuildItems';
-// import authData from '../../helpers/data/authData';
+import itemsData from '../../../helpers/data/itemsData';
+import BuildItems from '../../shared/BuildItems/BuildItems';
+import authData from '../../../helpers/data/authData';
 
 class MyStuff extends React.Component {
   state = {
@@ -9,7 +9,7 @@ class MyStuff extends React.Component {
   }
 
   componentDidMount() {
-    itemsData.getItemsByUid()
+    itemsData.getItemsByUid(authData.getUid)
       .then((items) => this.setState({ items }))
       .catch((err) => console.error('could not retrive items', err));
   }
@@ -42,5 +42,4 @@ class MyStuff extends React.Component {
     );
   }
 }
-
 export default MyStuff;

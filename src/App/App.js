@@ -9,13 +9,13 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import fbConnection from '../helpers/data/connections';
 import './App.scss';
-import Auth from '../components/Auth/Auth';
-import MyNavbar from '../components/MyNavbar/MyNavbar';
-import Edit from '../components/Edit/Edit';
-import MyStuff from '../components/MyStuff/MyStuff';
-import NewStuff from '../components/New/New';
-import SingleStuff from '../components/SingleStuff/SingleStuff';
-import Home from '../components/Home/Home';
+import Auth from '../components/pages/Auth/Auth';
+import MyNavbar from '../components/pages/MyNavbar/MyNavbar';
+import Edit from '../components/pages/Edit/Edit';
+import MyStuff from '../components/pages/MyStuff/MyStuff';
+import NewStuff from '../components/pages/New/New';
+import SingleStuff from '../components/pages/SingleStuff/SingleStuff';
+import Home from '../components/pages/Home/Home';
 
 fbConnection();
 

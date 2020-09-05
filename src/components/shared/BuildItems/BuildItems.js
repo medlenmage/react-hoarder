@@ -1,6 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import itemShape from '../../helpers/propz/itemShape';
+import itemShape from '../../../helpers/propz/itemShape';
 
 class BuildItems extends React.Component {
   static propTypes = {
