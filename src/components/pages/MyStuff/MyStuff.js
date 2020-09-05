@@ -29,10 +29,11 @@ class MyStuff extends React.Component {
   render() {
     const { items } = this.state;
 
-    const itemCards = items.map((item) => <BuildItems key={item.id} item={item} />);
+    const itemCards = items.map((item) => <BuildItems key={item.id} items={items} />);
 
     return (
       <div className="Edit">
+        <h3>All this Junk</h3>
         <div className="mb-3">
           <div className="card-columns">
             {itemCards}
