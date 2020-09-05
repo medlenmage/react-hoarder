@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import Auth from '../Auth/Auth';
 import { Link } from 'react-router-dom';
+import Auth from '../Auth/Auth';
 
 class MyNavbar extends React.Component {
   static propTypes = {
