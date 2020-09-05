@@ -1,24 +1,43 @@
 import React from 'react';
+import itemsData from '../../helpers/data/itemsData';
+import BuildItems from '../BuildItems/BuildItems';
+// import authData from '../../helpers/data/authData';
 
 class MyStuff extends React.Component {
-  editPileEvent = (e) => {
-    e.preventDefault();
-    const pileId = 12345;
-    this.props.history.push(`/edit/${pileId}`);
-  };
+  state = {
+    items: [],
+  }
 
-  singlePileEvent = (e) => {
-    e.preventDefault();
-    const pileId = 12345;
-    this.props.history.push(`/stuff/${pileId}`);
-  };
+  componentDidMount() {
+    itemsData.getItemsByUid()
+      .then((items) => this.setState({ items }))
+      .catch((err) => console.error('could not retrive items', err));
+  }
+
+  // editPileEvent = (e) => {
+  //   e.preventDefault();
+  //   const pileId = 12345;
+  //   this.props.history.push(`/edit/${pileId}`);
+  // };
+
+  // singlePileEvent = (e) => {
+  //   e.preventDefault();
+  //   const pileId = 12345;
+  //   this.props.history.push(`/stuff/${pileId}`);
+  // };
 
   render() {
+    const { items } = this.state;
+
+    const itemCards = items.map((item) => <BuildItems key={item.id} item={item} />);
+
     return (
       <div className="Edit">
-        <h1>MyStuff</h1>
-        <button className="btn btn-primary" onClick={this.editPileEvent}>Edit</button>
-        <button className="btn btn-success" onClick={this.singlePileEvent}>Single</button>
+        <div className="mb-3">
+          <div className="card-columns">
+            {itemCards}
+          </div>
+        </div>
       </div>
     );
   }
