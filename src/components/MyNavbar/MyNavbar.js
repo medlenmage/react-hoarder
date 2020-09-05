@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import Auth from '../Auth/Auth';
+import { Link } from 'react-router-dom';
 
 class MyNavbar extends React.Component {
   static propTypes = {
@@ -25,13 +26,13 @@ class MyNavbar extends React.Component {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <a className="nav-link" href="../Home/Home">Home <span className="sr-only">(current)</span></a>
+              <Link to='/home'>Home</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="../MyStuff/MyStuff">My Stuff</a>
+              <Link to='/stuff'>My Stuff</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="../New/New">New</a>
+              <Link to='/new'>New Stuff</Link>
             </li>
           </ul>
           <div className="ml-auto">
