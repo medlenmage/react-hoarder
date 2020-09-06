@@ -17,7 +17,7 @@ class MyStuff extends React.Component {
   render() {
     const { items } = this.state;
 
-    const itemCards = items.map((item) => <BuildItems key={item.id} items={items} />);
+    const itemCards = items.map((item) => <BuildItems key={item.id} items={item} />);
 
     return (
       <div className="MyStuff">
