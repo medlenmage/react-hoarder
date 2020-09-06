@@ -4,7 +4,7 @@ const itemShape = PropTypes.shape({
   itemName: PropTypes.string.isRequired,
   itemImage: PropTypes.string.isRequired,
   itemDescription: PropTypes.string.isRequired,
-  uid: PropTypes.number.isRequired,
+  uid: PropTypes.string.isRequired,
 });
 
 export default itemShape;

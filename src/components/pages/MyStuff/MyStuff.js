@@ -9,22 +9,10 @@ class MyStuff extends React.Component {
   }
 
   componentDidMount() {
-    itemsData.getItemsByUid(authData.getUid)
+    itemsData.getItemsByUid(authData.getUid())
       .then((items) => this.setState({ items }))
       .catch((err) => console.error('could not retrive items', err));
   }
-
-  // editPileEvent = (e) => {
-  //   e.preventDefault();
-  //   const pileId = 12345;
-  //   this.props.history.push(`/edit/${pileId}`);
-  // };
-
-  // singlePileEvent = (e) => {
-  //   e.preventDefault();
-  //   const pileId = 12345;
-  //   this.props.history.push(`/stuff/${pileId}`);
-  // };
 
   render() {
     const { items } = this.state;
@@ -32,7 +20,7 @@ class MyStuff extends React.Component {
     const itemCards = items.map((item) => <BuildItems key={item.id} items={items} />);
 
     return (
-      <div className="Edit">
+      <div className="MyStuff">
         <h3>All this Junk</h3>
         <div className="mb-3">
           <div className="card-columns">
