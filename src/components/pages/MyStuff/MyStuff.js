@@ -20,16 +20,16 @@ class MyStuff extends React.Component {
       .catch((err) => console.error('could not retrive items', err));
   }
 
-  // removeItem = (itemId) => {
-  //   itemsData.deleteItem(itemId)
-  //     .then(() => this.getItems())
-  //     .catch((err) => console.error('delete item failed', err));
-  // }
+  removeItem = (itemId) => {
+    itemsData.deleteItem(itemId)
+      .then(() => this.getItems())
+      .catch((err) => console.error('delete item failed', err));
+  }
 
   render() {
     const { items } = this.state;
 
-    const itemCards = items.map((item) => <BuildItems key={item.id} items={items} removeItem={this.removeItem} />);
+    const itemCards = items.map((item) => <BuildItems key={item.id} items={item} removeItem={this.removeItem} />);
 
     return (
       <div className="MyStuff">
