@@ -8,16 +8,28 @@ class MyStuff extends React.Component {
     items: [],
   }
 
+  getItems = () => {
+    itemsData.getItemsByUid(authData.getUid())
+      .then((items) => this.setState({ items }))
+      .catch((err) => console.error('could not get items'));
+  }
+
   componentDidMount() {
     itemsData.getItemsByUid(authData.getUid())
       .then((items) => this.setState({ items }))
       .catch((err) => console.error('could not retrive items', err));
   }
 
+  removeItem = (itemId) => {
+    itemsData.deleteItem(itemId)
+      .then(() => this.getItems())
+      .catch((err) => console.error('delete item failed', err));
+  }
+
   render() {
     const { items } = this.state;
 
-    const itemCards = items.map((item) => <BuildItems key={item.id} items={item} />);
+    const itemCards = items.map((item) => <BuildItems key={item.id} items={item} removeItem={this.removeItem} />);
 
     return (
       <div className="MyStuff">
