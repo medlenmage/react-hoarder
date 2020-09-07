@@ -16,6 +16,7 @@ class BuildItems extends React.Component {
 
     return (
       <div className="card" >
+        <button type="button" className="btn btn-danger ml-0">X</button>
         <img className="card-img-top" src={items.itemImage} alt={items.id} />
         <div className="card-body">
           <h5 className="card-title">{items.itemName}</h5>
