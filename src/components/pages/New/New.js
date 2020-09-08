@@ -1,4 +1,6 @@
 import React from 'react';
+import authData from '../../../helpers/data/authData';
+import itemsData from '../../../helpers/data/itemsData';
 
 class NewStuff extends React.Component {
   state = {
@@ -21,6 +23,24 @@ class NewStuff extends React.Component {
     e.preventDefault();
     this.setState({ itemDescription: e.target.value });
   }
+
+  hoardItem = (e) => {
+    e.preventDefault();
+    const { itemName, itemImage, itemDescription } = this.state;
+
+    const newItem = {
+      itemName,
+      itemImage,
+      itemDescription,
+      uid: authData.getUid(),
+    };
+
+    itemsData.addItem(newItem)
+      .then(() => {
+        this.props.history.push('/stuff');
+      })
+      .catch((err) => console.error('could not add item', err));
+  };
 
   render() {
     const { itemName, itemImage, itemDescription } = this.state;
@@ -62,7 +82,7 @@ class NewStuff extends React.Component {
             onChange={this.changeItemDescription}
             />
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button className="btn btn-primary" onClick={this.hoardItem}>Submit</button>
         </form>
       </div>
     );
