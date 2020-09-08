@@ -74,11 +74,6 @@ class App extends React.Component {
           </>
         </BrowserRouter>
       </div>
-
-    // <div className="App">
-    //   <MyNavbar authed={authed}/>
-    //   <h2>react hoarder</h2>
-    // </div>
     );
   }
 }
